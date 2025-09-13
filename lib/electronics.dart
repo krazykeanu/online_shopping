@@ -1,8 +1,8 @@
 // lib/electronics.dart
-import '../online_shopping/lib/product.dart';
+import 'product.dart';
 
 // Derived class: Electronics
-// Adds unique property warrantyYears and method testDevice()
+// Adds unique property `warrantyYears` and method `testDevice()`
 
 class Electronics extends Product {
   final int warrantyYears;
