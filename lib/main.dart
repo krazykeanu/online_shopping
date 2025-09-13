@@ -30,12 +30,7 @@ void main() {
   }
 
   print('\n--- Demo: Book (derived) ---');
-  var book = Book(
-    name: 'Dart Programming',
-    price: 30.0,
-    stock: 5,
-    author: 'John Doe',
-  );
+  var book = Book(name: 'Dart Programming', price: 30.0, stock: 5, author: 'John Doe');
   print(book.bookInfo());
   book.readSample();
   book.sellItem(2);
@@ -48,12 +43,7 @@ void main() {
   shirt.sellItem(3);
 
   print('\n--- Demo: Electronics (derived) ---');
-  var phone = Electronics(
-    name: 'Smartphone',
-    price: 500.0,
-    stock: 3,
-    warrantyYears: 2,
-  );
+  var phone = Electronics(name: 'Smartphone', price: 500.0, stock: 3, warrantyYears: 2);
   print(phone.info());
   phone.testDevice();
   phone.sellItem(1);
