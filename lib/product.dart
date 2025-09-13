@@ -4,6 +4,8 @@
 
 class Product {
   final String name;
+
+  // Private fields — encapsulated (can't be accessed from other files)
   double _price;
   int _stock;
 
