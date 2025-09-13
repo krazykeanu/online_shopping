@@ -5,9 +5,7 @@ import 'clothing.dart';
 import 'electronics.dart';
 
 void main() {
-
   print('Online Products');
-
 
   var baseProduct = Product(name: 'Generic Item', price: 20.0, stock: 10);
   print(baseProduct.info());
@@ -17,9 +15,7 @@ void main() {
   baseProduct.sellItem(50);
   print('Stock getter: ${baseProduct.stock}');
 
-
   print('\nChange stock via setter (valid)');
-
   try {
     baseProduct.stock = 15;
     print('New stock: ${baseProduct.stock}');
@@ -28,7 +24,6 @@ void main() {
   }
 
   print('\nAttempt invalid stock (should throw)');
-
   try {
     baseProduct.stock = -5;
   } catch (e) {
@@ -36,26 +31,35 @@ void main() {
   }
 
   print('\nBook:');
-
-  var book = Book(name: 'Dart Programming', price: 30.0, stock: 5, author: 'Christian');
-
+  var book = Book(
+    name: 'Dart Programming',
+    price: 30.0,
+    stock: 5,
+    author: 'Christian',
+  );
   print(book.bookInfo());
   book.readSample();
   book.sellItem(2);
   book.sellItem(10);
 
   print('\nClothing:');
-  var shirt = Clothing(name: 'T-Shirt', price: 150.0, stock: 20, size: 'M');
+  var shirt = Clothing(
+    name: 'T-Shirt',
+    price: 150.0,
+    stock: 20,
+    size: 'M',
+  );
   print(shirt.clothingInfo());
   shirt.tryOn();
   shirt.sellItem(3);
 
   print('\nElectronics:');
-
+  var phone = Electronics(
+    name: 'Iphone 15 Pro Max',
+    price: 50000.0,
+    stock: 3,
+    warrantyYears: 2,
   );
-
-  var phone = Electronics(name: 'Iphone 15 Pro Max', price: 50000.0, stock: 3, warrantyYears: 2);
-
   print(phone.info());
   phone.testDevice();
   phone.sellItem(1);
