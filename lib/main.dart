@@ -5,7 +5,7 @@ import 'clothing.dart';
 import 'electronics.dart';
 
 void main() {
-  print('Products:');
+  print('Online Products:');
   var baseProduct = Product(name: 'Generic Item', price: 20.0, stock: 10);
   print(baseProduct.info());
 
