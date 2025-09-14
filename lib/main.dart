@@ -1,73 +1,59 @@
-// lib/main.dart
-import 'product.dart';
+import 'account.dart';
 import 'book.dart';
 import 'clothing.dart';
 import 'electronics.dart';
 
 void main() {
-  print('Online Products');
+  print('--- Online Shopping System ---');
 
-  var baseProduct = Product(name: 'Generic Item', price: 20.0, stock: 10);
-  print(baseProduct.info());
+  // Create accounts (customers)
+  var alice = Account(owner: 'Alice', startingBalance: 1000.0);
+  var bob = Account(owner: 'Bob', startingBalance: 300.0);
 
-  baseProduct.addStock(5);
-  baseProduct.sellItem(3);
-  baseProduct.sellItem(50);
-  print('Stock getter: ${baseProduct.stock}');
+  print(alice.info());
+  print(bob.info());
 
-  print('\nChange stock via setter (valid)');
-  try {
-    baseProduct.stock = 15;
-    print('New stock: ${baseProduct.stock}');
-  } catch (e) {
-    print('Setter error: $e');
-  }
-
-  print('\nAttempt invalid stock (should throw)');
-  try {
-    baseProduct.stock = -5;
-  } catch (e) {
-    print('Caught error when setting stock: $e');
-  }
-
-  print('\nBook:');
+  // Create products
   var book = Book(
     name: 'Dart Programming',
-    price: 30.0,
+    price: 300.0,
     stock: 5,
     author: 'Christian',
   );
-  print(book.bookInfo());
-  book.readSample();
-  book.sellItem(2);
-  book.sellItem(10);
-
-  print('\nClothing:');
-  var shirt = Clothing(
-    name: 'T-Shirt',
-    price: 150.0,
-    stock: 20,
-    size: 'M',
-  );
-  print(shirt.clothingInfo());
-  shirt.tryOn();
-  shirt.sellItem(3);
-
-  print('\nElectronics:');
+  var shirt = Clothing(name: 'T-Shirt', price: 150.0, stock: 20, size: 'M');
   var phone = Electronics(
     name: 'Iphone 15 Pro Max',
     price: 50000.0,
     stock: 3,
     warrantyYears: 2,
   );
-  print(phone.info());
-  phone.testDevice();
-  phone.sellItem(1);
-  phone.sellItem(5);
 
-  print('\nFinal Summary');
-  print('Base Product Stock: ${baseProduct.stock}');
-  print('Book Stock: ${book.stock}');
-  print('Clothing Stock: ${shirt.stock}');
-  print('Electronics Stock: ${phone.stock}');
+  // Alice buys a book
+  print('\nTransaction 1: Alice buys a book');
+  if (book.sellItem(1)) {
+    alice.purchase(book.name, book.price);
+    book.readSample();
+  }
+
+  // Bob tries to buy a phone (insufficient funds)
+  print('\nTransaction 2: Bob tries to buy a phone');
+  if (phone.sellItem(1)) {
+    bob.purchase(phone.name, phone.price);
+    phone.testDevice();
+  }
+
+  // Bob buys 2 shirts
+  print('\nTransaction 3: Bob buys shirts');
+  if (shirt.sellItem(2)) {
+    bob.purchase(shirt.name, shirt.price * 2);
+    shirt.tryOn();
+  }
+
+  // Final Summary
+  print('\n--- Final Summary ---');
+  print(alice.info());
+  print(bob.info());
+  print(book.bookInfo());
+  print(shirt.clothingInfo());
+  print(phone.info());
 }

@@ -1,9 +1,7 @@
-import 'product.dart';
+import 'account.dart';
 
 // Derived class: Clothing
-// Adds unique property size and method tryOn()
-
-class Clothing extends Product {
+class Clothing extends Account {
   final String size;
 
   Clothing({
@@ -13,12 +11,10 @@ class Clothing extends Product {
     required this.size,
   }) : super(name: name, price: price, stock: stock);
 
-  // Unique method
   void tryOn() {
     print('Try on -> $name, Size $size');
   }
 
-  // Override sellItem to add a size note
   @override
   bool sellItem(int quantity) {
     print('Clothing override -> Checking size $size');
