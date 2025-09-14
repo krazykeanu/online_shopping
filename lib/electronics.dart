@@ -1,4 +1,3 @@
-// lib/electronics.dart
 import 'product.dart';
 
 // Derived class: Electronics
@@ -16,11 +15,11 @@ class Electronics extends Product {
 
   // Unique method
   void testDevice() {
-    print('Testing the $name... All systems go!');
+    print('Test device -> $name: All systems functional');
   }
 
   // Override info
   @override
   String info() =>
-      'Electronics: $name | Price: ₱${price.toStringAsFixed(2)} | Stock: $stock | Warranty: $warrantyYears year(s)';
+      'Electronics "$name" | Price: ₱${price.toStringAsFixed(2)} | Stock: $stock | Warranty: $warrantyYears year(s)';
 }
