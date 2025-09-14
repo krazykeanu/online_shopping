@@ -1,4 +1,3 @@
-// lib/clothing.dart
 import 'product.dart';
 
 // Derived class: Clothing
@@ -16,15 +15,16 @@ class Clothing extends Product {
 
   // Unique method
   void tryOn() {
-    print('Trying on $name, size $size...');
+    print('Try on -> $name, Size $size');
   }
 
   // Override sellItem to add a size note
   @override
   bool sellItem(int quantity) {
-    print('Checking stock for clothing item (size $size)...');
+    print('Clothing override -> Checking size $size');
     return super.sellItem(quantity);
   }
 
-  String clothingInfo() => 'Clothing: $name | Size: $size | Price: ₱${price.toStringAsFixed(2)}';
+  String clothingInfo() =>
+      'Clothing "$name" | Size: $size | Price: ₱${price.toStringAsFixed(2)} | Stock: $stock';
 }
