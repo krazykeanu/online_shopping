@@ -1,9 +1,7 @@
-import 'product.dart';
+import 'account.dart';
 
 // Derived class: Electronics
-// Adds unique property `warrantyYears` and method `testDevice()`
-
-class Electronics extends Product {
+class Electronics extends Account {
   final int warrantyYears;
 
   Electronics({
@@ -13,12 +11,10 @@ class Electronics extends Product {
     required this.warrantyYears,
   }) : super(name: name, price: price, stock: stock);
 
-  // Unique method
   void testDevice() {
     print('Test device -> $name: All systems functional');
   }
 
-  // Override info
   @override
   String info() =>
       'Electronics "$name" | Price: ₱${price.toStringAsFixed(2)} | Stock: $stock | Warranty: $warrantyYears year(s)';
