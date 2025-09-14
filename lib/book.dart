@@ -1,4 +1,3 @@
-// lib/book.dart
 import 'product.dart';
 
 // Derived class: Book
@@ -16,9 +15,9 @@ class Book extends Product {
 
   // Unique method
   void readSample() {
-    print('Reading sample pages of "$name" by $author...');
+    print('Read sample -> "$name" by $author (First 10 pages)');
   }
 
   // Unique info method
-  String bookInfo() => 'Book: $name by $author | Price: ₱${price.toStringAsFixed(2)}';
+  String bookInfo() => 'Book "$name" by $author | Price: ₱${price.toStringAsFixed(2)} | Stock: $stock';
 }
