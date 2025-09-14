@@ -1,4 +1,3 @@
-// lib/main.dart
 import 'product.dart';
 import 'book.dart';
 import 'clothing.dart';
@@ -6,29 +5,6 @@ import 'electronics.dart';
 
 void main() {
   print('Online Products');
-
-  var baseProduct = Product(name: 'Generic Item', price: 20.0, stock: 10);
-  print(baseProduct.info());
-
-  baseProduct.addStock(5);
-  baseProduct.sellItem(3);
-  baseProduct.sellItem(50);
-  print('Stock getter: ${baseProduct.stock}');
-
-  print('\nChange stock via setter (valid)');
-  try {
-    baseProduct.stock = 15;
-    print('New stock: ${baseProduct.stock}');
-  } catch (e) {
-    print('Setter error: $e');
-  }
-
-  print('\nAttempt invalid stock (should throw)');
-  try {
-    baseProduct.stock = -5;
-  } catch (e) {
-    print('Caught error when setting stock: $e');
-  }
 
   print('\nBook:');
   var book = Book(
@@ -40,7 +16,6 @@ void main() {
   print(book.bookInfo());
   book.readSample();
   book.sellItem(2);
-  book.sellItem(10);
 
   print('\nClothing:');
   var shirt = Clothing(
@@ -63,10 +38,8 @@ void main() {
   print(phone.info());
   phone.testDevice();
   phone.sellItem(1);
-  phone.sellItem(5);
 
   print('\nFinal Summary');
-  print('Base Product Stock: ${baseProduct.stock}');
   print('Book Stock: ${book.stock}');
   print('Clothing Stock: ${shirt.stock}');
   print('Electronics Stock: ${phone.stock}');
