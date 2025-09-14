@@ -1,4 +1,3 @@
-// lib/product.dart
 // Base class: Product
 // Demonstrates encapsulation with private fields, getter/setter, and safe methods.
 
@@ -32,28 +31,28 @@ class Product {
   // Method 1: Add stock
   void addStock(int amount) {
     if (amount <= 0) {
-      print('Add stock failed: amount must be positive.');
+      print('Add stock $amount -> Failed: amount must be positive');
       return;
     }
     _stock += amount;
-    print('Added $amount stock. New stock: $_stock');
+    print('Add stock $amount -> New stock: $_stock');
   }
 
   // Method 2: Sell item
   bool sellItem(int quantity) {
     if (quantity <= 0) {
-      print('Sale failed: quantity must be positive.');
+      print('Sell $quantity -> Failed: quantity must be positive');
       return false;
     }
     if (quantity > _stock) {
-      print('Sale failed: not enough stock.');
+      print('Sell $quantity -> Failed: not enough stock (Available: $_stock)');
       return false;
     }
     _stock -= quantity;
-    print('Sold $quantity item(s). Remaining stock: $_stock');
+    print('Sell $quantity -> Success, Remaining stock: $_stock');
     return true;
   }
 
   // Info method
-  String info() => 'Product: $name | Price: ₱${_price.toStringAsFixed(2)} | Stock: $_stock';
+  String info() => 'Base Product "$name" | Price: ₱${_price.toStringAsFixed(2)} | Stock: $_stock';
 }
