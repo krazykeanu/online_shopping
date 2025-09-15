@@ -1,5 +1,4 @@
 import 'account.dart';
-import 'product.dart';
 import 'book.dart';
 import 'clothing.dart';
 import 'electronics.dart';
@@ -15,31 +14,15 @@ void main() {
   print(bob.info());
 
   // Create products
-  print('\nBook:');
   var book = Book(
     name: 'Dart Programming',
     price: 300.0,
     stock: 5,
     author: 'Christian',
   );
-  
+
   var shirt = Clothing(name: 'T-Shirt', price: 150.0, stock: 20, size: 'M');
-  print(book.bookInfo());
-  book.readSample();
-  book.sellItem(2);
 
-  print('\nClothing:');
-  var shirt = Clothing(
-    name: 'T-Shirt',
-    price: 150.0,
-    stock: 20,
-    size: 'M',
-  );
-  print(shirt.clothingInfo());
-  shirt.tryOn();
-  shirt.sellItem(3);
-
-  print('\nElectronics:');
   var phone = Electronics(
     name: 'Iphone 15 Pro Max',
     price: 50000.0,
@@ -47,22 +30,35 @@ void main() {
     warrantyYears: 2,
   );
 
-  // Alice buys a book
+  // Show initial product info
+  print('\nBook:');
+  print(book.bookInfo());
+  book.readSample();
+  book.sellItem(2);
+
+  print('\nClothing:');
+  print(shirt.clothingInfo());
+  shirt.tryOn();
+  shirt.sellItem(3);
+
+  print('\nElectronics:');
+  print(phone.info());
+  phone.testDevice();
+
+  // Transactions
   print('\nTransaction 1: Alice buys a book');
   if (book.sellItem(1)) {
     alice.purchase(book.name, book.price);
     book.readSample();
   }
 
-  // Bob tries to buy a phone (insufficient funds)
   print('\nTransaction 2: Bob tries to buy a phone');
   if (phone.sellItem(1)) {
     bob.purchase(phone.name, phone.price);
     phone.testDevice();
   }
 
-  // Bob buys 2 shirts
-  print('\nTransaction 3: Bob buys shirts');
+  print('\nTransaction 3: Bob buys 2 shirts');
   if (shirt.sellItem(2)) {
     bob.purchase(shirt.name, shirt.price * 2);
     shirt.tryOn();
@@ -75,11 +71,8 @@ void main() {
   print(book.bookInfo());
   print(shirt.clothingInfo());
   print(phone.info());
-  print(phone.info());
-  phone.testDevice();
-  phone.sellItem(1);
 
-  print('\nFinal Summary');
+  print('\nStock Summary:');
   print('Book Stock: ${book.stock}');
   print('Clothing Stock: ${shirt.stock}');
   print('Electronics Stock: ${phone.stock}');
